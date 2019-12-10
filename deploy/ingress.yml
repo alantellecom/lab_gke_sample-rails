@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: lab-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: lab-ip
+    networking.gke.io/managed-certificates: lab-certificate
+spec:
+  backend:
+    serviceName: webapp-service
+    servicePort: 80

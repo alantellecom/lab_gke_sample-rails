@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: lab-certificate
+spec:
+  domains:
+    - rails-lab-260819.duckdns.org
