@@ -1,20 +1,19 @@
 apiVersion: batch/v1
 kind: Job
-metadata:
+metadata: #------------------------------------------quando chave do map não possui valor, linha abaixo deve ser identada para não entrar valor nulo
   name: db-migrate
 spec:
-  completions: 1
+  completions: 1  #-------------------------------- quando chave do map possui valor, linha abaixo não pode ser identada pois insere valor indesejado como chave
   template:
     metadata:
       name: db-migrate
     spec:
       restartPolicy: Never
       containers:
-      - name: db-migrate
+      - name: db-migrate #------------------------------------------------------- hífen da lista pode ser identado ou não (indiferente) em relação a chave (linha acima). Indica lista de maps
         image: gcr.io/rails-lab-260819/appbasico:latest
-        args:  ["bundle", "exec", "rake", "db:create", "db:migrate"]
+        args:  ["bundle", "exec", "rake", "db:create", "db:migrate"]  #-------- indica um map com uma lista como valor
         envFrom:
         - secretRef:
             name: file-secret
-
 
