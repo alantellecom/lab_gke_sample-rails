@@ -13,16 +13,8 @@ spec:
       - name: db-migrate
         image: gcr.io/rails-lab-260819/appbasico:latest
         args:  ["bundle", "exec", "rake", "db:create", "db:migrate"]
-        env:
-        - name: DATABASE_URL
-          valueFrom:
-            secretKeyRef:
-              name: lab-secret
-              key: DATABASE_URL
-        - name: SECRET_KEY_BASE
-          valueFrom:
-            secretKeyRef:
-              name: lab-secret
-              key: SECRET_KEY_BASE
+        envFrom:
+        - secretRef:
+            name: file-secret
 
 
